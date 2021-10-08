@@ -1,12 +1,9 @@
 package com.example.m2testinganimals;
 
-import jdk.jfr.Enabled;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
 
 @Entity
 public class Animals {
@@ -15,6 +12,7 @@ public class Animals {
     //Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String especie;
     private String nombre;
     private String sexo;
@@ -25,7 +23,8 @@ public class Animals {
     //Build
     public Animals(){}
 
-    public Animals(String especie, String nombre, String sexo, String FN, double peso){
+    public Animals(Long id, String especie, String nombre, String sexo, String FN, double peso){
+        this.id = id;
         this.especie = especie;
         this.nombre = nombre;
         this.sexo = sexo;
@@ -34,6 +33,14 @@ public class Animals {
     }
 
     //Getter and Setter
+    public long getId(){
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getEspecie() {
         return especie;
     }
@@ -78,6 +85,7 @@ public class Animals {
     @Override
     public String toString() {
         return "Animales{" +
+                "ID='" + id + '\'' +
                 "especie='" + especie + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", sexo=" + sexo +
